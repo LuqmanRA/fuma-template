@@ -22,7 +22,7 @@ export const contents: Content[] = [
 		list: [
 			{
 				title: "Introduction",
-				href: "/docs/introduction",
+				href: "/docs/introductionexample",
 			},
 			{
 				title: "With Image",
@@ -443,6 +443,31 @@ export const contents: Content[] = [
 			{
 				title: "FAQ",
 				href: "/docs/reference/faq",
+			},
+		],
+	},
+	{
+		title: "Neetcode",
+		list: [
+			{
+				title: "Introduction",
+				href: "/docs/neetcode/introduction",
+			},
+			{
+				title: "Arrays & Hashing",
+				href: "/docs/neetcode/arrayshashing",
+			},
+			{
+				title: "Two Pointers",
+				href: "/docs/neetcode/twopointers",
+			},
+			{
+				title: "Stack",
+				href: "/docs/neetcode/stack",
+			},
+			{
+				title: "Sliding Window",
+				href: "/docs/neetcode/slidingwindow",
 			},
 		],
 	},

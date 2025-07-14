@@ -1,0 +1,113 @@
+---
+title: Two Pointers
+description: Learn how to use a database with Better Auth.
+---
+
+## Valid Palindrome
+
+To use secondary storage, implement the `SecondaryStorage` interface:
+
+```typescript
+interface SecondaryStorage {
+  get: (key: string) => Promise<string | null>;
+  set: (key: string, value: string, ttl?: number) => Promise<void>;
+  delete: (key: string) => Promise<void>;
+}
+```
+
+Then, provide your implementation to the `betterAuth` function:
+
+```typescript
+betterAuth({
+  // ... other options
+  secondaryStorage: {
+    // Your implementation here
+  },
+});
+```
+
+
+## Two Sum II Input Array Is Sorted
+
+Better Auth comes with a CLI tool to manage database migrations and generate schema.
+
+To use secondary storage, implement the `SecondaryStorage` interface:
+
+```typescript
+interface SecondaryStorage {
+  get: (key: string) => Promise<string | null>;
+  set: (key: string, value: string, ttl?: number) => Promise<void>;
+  delete: (key: string) => Promise<void>;
+}
+```
+
+Then, provide your implementation to the `betterAuth` function:
+
+```typescript
+betterAuth({
+  // ... other options
+  secondaryStorage: {
+    // Your implementation here
+  },
+});
+```
+
+
+## 3Sum
+
+**Example: Redis Implementation**
+
+Here's a basic example using Redis:
+
+```typescript
+import { createClient } from "redis";
+import { betterAuth } from "better-auth";
+
+const redis = createClient();
+await redis.connect();
+
+export const auth = betterAuth({
+	// ... other options
+	secondaryStorage: {
+		get: async (key) => {
+			const value = await redis.get(key);
+			return value ? value : null;
+		},
+		set: async (key, value, ttl) => {
+			if (ttl) await redis.set(key, value, { EX: ttl });
+			// or for ioredis:
+			// if (ttl) await redis.set(key, value, 'EX', ttl)
+			else await redis.set(key, value);
+		},
+		delete: async (key) => {
+			await redis.del(key);
+		}
+	}
+});
+```
+
+This implementation allows Better Auth to use Redis for storing session data and rate limiting counters. You can also add prefixes to the keys names.
+
+## Container With Most Water
+Better Auth requires the following tables to be present in the database. The types are in `typescript` format. You can use corresponding types in your database.
+
+To use secondary storage, implement the `SecondaryStorage` interface:
+
+```typescript
+interface SecondaryStorage {
+  get: (key: string) => Promise<string | null>;
+  set: (key: string, value: string, ttl?: number) => Promise<void>;
+  delete: (key: string) => Promise<void>;
+}
+```
+
+Then, provide your implementation to the `betterAuth` function:
+
+```typescript
+betterAuth({
+  // ... other options
+  secondaryStorage: {
+    // Your implementation here
+  },
+});
+```
