@@ -1,24 +1,27 @@
 ---
 title: Arrays & Hashing
-description: Learn how to use a database with Better Auth.
+description: Master the basics of arrays and hashing to solve common coding problems efficiently.
 ---
 
 ## Contains Duplicate
 
 Given an integer array `nums`, return `true` if any value appears **more than once** in the array, otherwise return `false`.
-### Example 1: ### 
-```typescript
-Input: nums = [1, 2, 3, 3]
 
-Output: true
+### Example:
+
+```typescript
+Input: nums = [1, 2, 3, 3];
+
+Output: true;
 ```
 
-### Example 2: ### 
 ```typescript
-Input: nums = [1, 2, 3, 4]
+Input: nums = [1, 2, 3, 4];
 
-Output: false
+Output: false;
 ```
+
+### Solution:
 
 ```typescript
 export const hasDuplicate = (nums: number[]): boolean => {
@@ -36,49 +39,35 @@ export const hasDuplicate = (nums: number[]): boolean => {
 };
 ```
 
-
 ## Valid Anagram
 
-Given two strings `s` and `t`, return `true` if the two strings are anagrams of each other, otherwise return `false`. <br /> <br />
+Given two strings `s` and `t`, return `true` if the two strings are anagrams of each other, otherwise return `false`. <br />
 
 An **anagram** is a string that contains the exact same characters as another string, but the order of the characters can be different.
 
-### Example 1: ###
-```typescript
-Input: s = "racecar", t = "carrace"
+### Example:
 
-Output: true
+```typescript
+Input: (s = "racecar"), (t = "carrace");
+
+Output: true;
 ```
 
-### Example 2: ###
 ```typescript
-Input: s = "jar", t = "jam"
+Input: (s = "jar"), (t = "jam");
 
-Output: false
+Output: false;
 ```
 
-### Constraints: ###
+### Constraints:
 
 - `s` and `t` consist of lowercase English letters.
 
-### Example 3: ###
-```typescript
-Input: nums = [5,5], target = 10
-
-Output: [0,1]
-```
-
-### Constraints: ###
-
-- `2 <= nums.length <= 1000`
-
-- `-10,000,000 <= nums[i] <= 10,000,000`
-
-- `-10,000,000 <= target <= 10,000,000`
+### Solution:
 
 ```typescript
 export const isAnagram = (firstWord: string, secondWord: string): boolean => {
-  return [...firstWord].sort().join('') === [...secondWord].sort().join('')
+  return [...firstWord].sort().join("") === [...secondWord].sort().join("")
     ? true
     : false;
 };
@@ -86,34 +75,36 @@ export const isAnagram = (firstWord: string, secondWord: string): boolean => {
 
 ## Two Sum
 
-Given an array of integers `nums` and an integer `target`, return the indices `i` and `j` such that `nums[i] + nums[j] == target` and `i != j`. <br /> <br />
+Given an array of integers `nums` and an integer `target`, return the indices `i` and `j` such that `nums[i] + nums[j] == target` and `i != j`. <br />
 
-You may assume that *every* input has exactly one pair of indices `i` and `j` that satisfy the condition. <br /> <br />
+You may assume that _every_ input has exactly one pair of indices `i` and `j` that satisfy the condition. <br />
 
 Return the answer with the smaller index first.
 
-### Example 1: ###
-```typescript
-Input:
-nums = [3,4,5,6], target = 7
+### Example:
 
-Output: [0,1]
+```typescript
+Input: (nums = [3, 4, 5, 6]), (target = 7);
+
+Output: [0, 1];
 ```
+
 Explanation: `nums[0] + nums [1] == 7`, so we return `[0, 1]`.
 
-### Example 2: ###
 ```typescript
-Input: nums = [4,5,6], target = 10
-Output: [0,2]
+Input: (nums = [4, 5, 6]), (target = 10);
+Output: [0, 2];
 ```
 
-### Constraints: ###
+### Constraints:
 
 - `1 <= strs.length <= 1000`.
 
 - `0 <= strs[i].length <= 100`
 
 - `strs[i]` is made up of lowercase English letters.
+
+### Solution
 
 ```typescript
 export const twoSum = (nums: number[], target: number): number[] => {
@@ -135,37 +126,39 @@ export const twoSum = (nums: number[], target: number): number[] => {
 ```
 
 ## Group Anagrams
-Given an array of strings `strs`, group all *anagrams* together into sublists. You may return the output in **any order**. <br /> <br />
+
+Given an array of strings `strs`, group all _anagrams_ together into sublists. You may return the output in **any order**. <br />
 
 An **anagram** is a string that contains the exact same characters as another string, but the order of the characters can be different.
 
-### Example 1: ###
-```typescript
-Input: strs = ["act","pots", "tops", "cat", "stop", "hat"]
+### Example:
 
-Output: [["hat"], ["act", "cat"], ["stop", "pots", "tops"]]
+```typescript
+Input: strs = ["act", "pots", "tops", "cat", "stop", "hat"];
+
+Output: [["hat"], ["act", "cat"], ["stop", "pots", "tops"]];
 ```
 
-### Example 2: ###
 ```typescript
-Input: strs = ["x"]
+Input: strs = ["x"];
 
-Output: [["x"]]
+Output: [["x"]];
 ```
 
-### Example 3: ###
 ```typescript
-Input: strs = [""]
+Input: strs = [""];
 
-Output: [[""]]
+Output: [[""]];
 ```
+
+### Solution
 
 ```typescript
 export const groupAnagrams = (letters: string[]): string[][] => {
   const anagramMap = new Map<string, string[]>();
 
   letters.forEach((letter) => {
-    const key = letter.split('').sort().join('');
+    const key = letter.split("").sort().join("");
     const groups = anagramMap.get(key) || [];
     groups.push(letter);
     anagramMap.set(key, groups);
@@ -178,33 +171,35 @@ export const groupAnagrams = (letters: string[]): string[][] => {
 
 ## Top K Frequent Elements
 
-Given an integer array `nums` and an integer `k`, return the `k` most frequent elements within the array. <br /> <br />
+Given an integer array `nums` and an integer `k`, return the `k` most frequent elements within the array. <br />
 
-The test cases are generated such that the answer is always **unique**. <br /> <br />
+The test cases are generated such that the answer is always **unique**. <br />
 
 You may return the output in **any order**.
 
-### Example 1: ###
-```typescript
-Input: nums = [1,2,2,3,3,3], k = 2
+### Example:
 
-Output: [2,3]
+```typescript
+Input: (nums = [1, 2, 2, 3, 3, 3]), (k = 2);
+
+Output: [2, 3];
 ```
 
-### Example 2: ###
 ```typescript
-Input: nums = [7,7], k = 1
+Input: (nums = [7, 7]), (k = 1);
 
-Output: [7]
+Output: [7];
 ```
 
-### Constraints: ###
+### Constraints:
 
 - `1 <= nums.length <= 10^4`.
 
 - `-1000 <= nums[i] <= 1000`
 
 - `1 <= k <= number of distinct elements in nums`.
+
+### Solution
 
 ```typescript
 export const topKFrequent = (nums: number[], frequent: number): number[] => {
@@ -225,27 +220,25 @@ export const topKFrequent = (nums: number[], frequent: number): number[] => {
 
 ## Encode and Decode Strings
 
-Design an algorithm to encode a list of strings to a single string. The encoded string is then decoded back to the original list of strings. <br /> <br />
+Design an algorithm to encode a list of strings to a single string. The encoded string is then decoded back to the original list of strings. <br />
 
 Please implement `encode` and `decode`
 
-### Example 1: ###
+### Example:
+
 ```typescript
-Input: ["neet", "code", "love", "you"]
+Input: ["neet", "code", "love", "you"];
 
-Output:
-
-["neet", "code", "love", "you"]
+Output: ["neet", "code", "love", "you"];
 ```
 
-### Example 2: ###
 ```typescript
-Input: ["we", "say", ":", "yes"]
+Input: ["we", "say", ":", "yes"];
 
-Output: ["we", "say", ":", "yes"]
+Output: ["we", "say", ":", "yes"];
 ```
 
-### Constraints: ###
+### Constraints:
 
 - `0 <= strs.length < 100`
 
@@ -253,15 +246,17 @@ Output: ["we", "say", ":", "yes"]
 
 - `strs[i]` contains only UTF-8 characters.
 
+### Solution
+
 ```typescript
 export const encode = (letters: string[]): string => {
-  return letters.join('#');
+  return letters.join("#");
 };
 
 export const decode = (text: string): string[] => {
   let newLetters: string[] = [];
 
-  newLetters = [...text.split('#')];
+  newLetters = [...text.split("#")];
 
   return newLetters;
 };
